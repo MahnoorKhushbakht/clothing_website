@@ -8,11 +8,14 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'hero-pattern': "bg-gradient-to-r from-cyan-500 to-blue-500",
+        // 'pattern': "url('./img/mensbg.jpg')",
+      },
+      colors: {
+        rust: '#A73928', // Define a custom color named "rust"
       },
     },
+    prefix: 'tw-',
   },
   plugins: [],
 };
