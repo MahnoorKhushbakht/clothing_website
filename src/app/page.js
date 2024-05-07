@@ -1,5 +1,5 @@
 import Buttons from '@/components/Buttons';
-
+import Searchbar from '@/components/Searchbar';
 import { Providers } from '@/lib/provider';
 import { Heading } from '@chakra-ui/react'
 import { VStack,Text} from '@chakra-ui/react';
@@ -16,7 +16,7 @@ export default function HomePage(){
         Discover timeless elegance and modern style with our <strong className="underline decoration-4 decoration-red-900/[.33] ">meticulously</strong> curated collection of men clothing, <strong className="underline decoration-4 decoration-red-900/[.33]">tailored</strong> to elevate your everyday <strong className="underline decoration-4 decoration-red-900/[.33]">wardrobe</strong>.
           </Text>
           <Buttons/>
-
+<Searchbar/>
         </VStack>
         </Providers>
         </div>
