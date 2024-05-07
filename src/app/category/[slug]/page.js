@@ -1,32 +1,25 @@
-'use client';
+
 import '@/app/css/style.css';
-import { getCategories, getposts } from '@/lib/categories';
+import { getCategories, getposts,getSlugs } from '@/lib/categories';
 import { parseHTMLContent } from '@/lib/content';
 import { Stack, Box } from '@chakra-ui/react';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import React, { useState, useEffect } from 'react';
 import CardData from '@/components/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 
-export default function ReviewPage({ params: { slug } }) {
-  const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getCategories(slug);
+
+export async function generateStaticParams() {
+  const slug = await getSlugs();
+  console.log('[ReviewPage] generateStaticParams:', slug);
+  return slug;
+}
+
+export default async function ReviewPage({ params: { slug } }) {
+  
+        const posts = await getCategories(slug);
      
-        console.log('Fetched data:', data); 
-        setPosts(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, [slug]); 
 
 
 
@@ -76,16 +69,3 @@ export default function ReviewPage({ params: { slug } }) {
 }
 
 
-{/* <Image
-                src={content.imageUrl}
-                alt='Green double couch with wooden legs'
-                borderRadius='lg'
-              />
-              <Stack mt='3' spacing='3'>
-                <Heading size='md'>
-                  <div dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-                </Heading>
-                <Text py='2'>
-                  {content.summary}
-                </Text>
-              </Stack> */}

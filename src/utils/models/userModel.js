@@ -4,7 +4,6 @@ const postSchema = new Schema({
   name: String,
   comment: {
     type: String,
-    required: true
   },
   rating: {
     type: Number,

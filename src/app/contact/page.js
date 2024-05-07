@@ -227,7 +227,7 @@ const Contact = () => {
                         background: '#030712',
                         color: '#d1d5db',
                       },
-                      marginTop: '16px',
+                      margintop: '16px',
                       marginBottom:'4px',
                       fontFamily: 'Helvetica, Arial',
                     }}
