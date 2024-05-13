@@ -8,12 +8,11 @@ async function dbConnect() {
     return;
   }
 
-  const db = await mongoose.connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  const db = await mongoose.connect(uri);
 
   connection.isConnected = db.connections[0].readyState;
 }
 
 export default dbConnect;
+
+

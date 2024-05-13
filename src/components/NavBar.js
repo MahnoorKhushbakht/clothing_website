@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Link from 'next/link';
-
+import Searchbar from './Searchbar';
 
 function BasicExample() {
   return (
@@ -27,6 +27,9 @@ function BasicExample() {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
+          <div className="d-flex me-2 justify-center">
+          <Searchbar/>
+          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>

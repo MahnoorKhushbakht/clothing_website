@@ -29,4 +29,14 @@ export async function getSlugs() {
     return posts.map((post) => post.slug);
 }
 
+export async function getComments(slug) {
+    console.log('slug',slug)
+    const postsResponse = await fetch('http://localhost:3000/api/posts', { next: { revalidate: 10 } });
+    const posts = await postsResponse.json();
+    const filteredPosts = posts.data.filter(post => post.slug === slug);
+
+    return filteredPosts;
+}
 // { cache: 'no-store' }
+
+// const slug = parts[1].trim().replace(/^"(.*)"$/, '$1');

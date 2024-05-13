@@ -1,6 +1,6 @@
 import { Schema, model, models } from 'mongoose';
 
-const postSchema = new Schema({
+const fieldSchema = new Schema({
   name: String,
   comment: {
     type: String,
@@ -9,8 +9,17 @@ const postSchema = new Schema({
     type: Number,
     default: 0, 
   },
+  slug: {
+    type: String,
+   unique:true,
+  //  required
+  },
 });
+const Field = models.Field || model('Field', fieldSchema);
 
-const Post = models.Post || model('Post', postSchema);
 
-export default Post;
+
+
+
+
+export default Field;

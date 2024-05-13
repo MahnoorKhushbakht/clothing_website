@@ -5,26 +5,32 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { Button, Box } from '@mui/material';
 import { HStack, VStack } from '@chakra-ui/react';
-function Form() {
+
+function Form({slug}) {
+
   const [formData, setFormData] = useState({
     name: '',
     comment: '',
     rating: 0,
-  });
+    slug: slug // Ensure that slug is set correctly
+});
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: name === 'rating' ? parseInt(value) : value,
-    }));
-  };
+console.log('form',formData.slug)
+console.log('details',slug)
+const handleChange = (event) => {
+  const { name, value } = event.target;
+  setFormData((prevFormData) => ({
+    ...prevFormData,
+    [name]: name === 'rating' ? parseInt(value) : value,
+    slug: slug // Include the slug value
+  }));
+};
 
   const apiUrl = process.env.NEXT_PUBLIC_API_URL_Posts;
-
+console.log('slug',slug)
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+   
     try {
       const response = await fetch(apiUrl, {
         method: 'POST',
@@ -33,8 +39,10 @@ function Form() {
         },
         body: JSON.stringify(formData),
       });
+      
       if (response.ok) {
         alert('Data saved successfully!');
+       
         setFormData({ name: '', comment: '', rating: 0 });
       } else {
         throw new Error('Server responded with an error');
@@ -49,6 +57,7 @@ function Form() {
  
     <form onSubmit={handleSubmit}>
     <HStack spacing={2} >
+    <TextField type="string" name="slug" value={slug} />
       <TextField
         id="name"
         label="Name"
